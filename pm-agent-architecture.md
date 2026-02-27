@@ -53,7 +53,7 @@ This system automates the transformation of raw customer conversations into acti
 - **[N] customer notes** processed and stored
 - **[N] lighthouse customer profiles** with full pipeline treatment
 - **[N] Jira issues** in reference snapshot
-- **7 active epics** tracked for [PROJECT_KEY] project
+- **[N] active epics** tracked for [PROJECT_KEY] project
 - **[N] KB total** repository size ([N] KB skills + [N] KB context)
 
 The system is operational and battle-tested across multiple customer engagements, with an evaluation framework in place to capture failure modes and improve reliability.
