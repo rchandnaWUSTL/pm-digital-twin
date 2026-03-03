@@ -22,14 +22,14 @@ This prevents accidental backlog pollution and gives you control over what gets 
 
 ### Skill Architecture
 
-The system uses 25 self-contained skills organized into 6 categories:
+The system uses 26 self-contained skills organized into 6 categories:
 
 - **Memory & Fetch** — Format notes, update customer profiles, search notes by customer or topic
 - **Ingestion** — Smart router that auto-detects content format (Slack threads, RFCs, blog posts) and structures it
 - **Extraction** — Parallel analysis: extract themes, asks, pain points, tool signals, map to existing Jira issues
 - **Merge** — Deterministic combination of extraction outputs (no LLM, pure function)
 - **Output** — Generate insights summaries, create/update Jira issues, write PRDs/PRFAQs
-- **Analysis** — Review engineering docs, analyze prior art, thought partner framework
+- **Analysis** — Review engineering docs, analyze prior art, thought partner framework, pre-call question planning
 
 Skills compose into pipelines or run standalone. Each skill has explicit input/output contracts defined in `/skills/{name}/SKILL.md`.
 
@@ -129,7 +129,7 @@ Add the Atlassian MCP server to your Claude Code settings:
 ### 4. Create Context Directories
 
 ```bash
-mkdir -p context/{customer-notes,customer-profiles,insights,pending,product-context,system,templates}
+mkdir -p context/{customer-notes,customer-profiles,insights,pending,product-context,system,templates,call-plans}
 mkdir -p context/product-context/{prds,market-signals,field-signals,engineering-signals,engineering,slack-threads,prior-art}
 ```
 
@@ -439,6 +439,7 @@ You now have:
 | `review-engineering-doc` | PM-perspective review comments + summary | Engineering doc → 5-15 review comments + saved summary |
 | `analyze-prior-art` | Prior art analysis with reusable patterns and gaps | Competitor/reference doc → Reusable patterns + gaps + saved summary |
 | `thought-partner` | Optional product thinking framework | Topic or downstream task → 5-stage analysis + recommendation |
+| `call-planner` | Pre-call Mom Test question generation | Customer, topic, or meeting context → Structured call plan |
 
 ### Refresh Tools
 
@@ -469,6 +470,29 @@ You can invoke individual skills without pipelines:
 # Analyze competitor documentation
 "Analyze prior art for [project]"
 [Paste competitor doc]
+```
+
+### Pre-Call Planning
+
+Prepare for customer calls with structured research questions based on The Mom Test methodology:
+
+```bash
+# By customer — loads full history, profile, and past insights
+"Prep a call plan for [CUSTOMER_NAME]"
+
+# By topic — searches across all customers and product context
+"Generate a call plan for vulnerability scanning"
+
+# By meeting context — for prospects or new contacts
+"Prep a call plan for my meeting with a large FSI prospect evaluating container security"
+```
+
+The call planner identifies knowledge gaps, generates questions in three depth layers (openers, deep dives, commitment/decision), and flags context-specific traps to avoid (e.g., accidentally revealing roadmap items). Output is display-only — say `"save that call plan"` to persist.
+
+Combine with the thought partner for deeper pre-call analysis:
+
+```bash
+"Prep a call plan for [CUSTOMER_NAME] --think"
 ```
 
 ### Thought Partner Modifier
@@ -581,6 +605,7 @@ Skills that need rich context follow wikilinks exactly one hop (never recursive)
 | Market signals | `/context/product-context/market-signals/{slug}-signal-{YYYY-MM-DD}.md` |
 | Field signals | `/context/product-context/field-signals/{slug}-signal-{YYYY-MM-DD}.md` |
 | Engineering signals | `/context/product-context/engineering-signals/{slug}-signal-{YYYY-MM-DD}.md` |
+| Call plans | `/context/call-plans/{slug}-call-plan-{YYYY-MM-DD}.md` |
 
 ## Jira Permissions
 
@@ -649,6 +674,7 @@ If customer profiles or Jira snapshot aren't available at session start:
 
 **Ongoing usage:**
 
+- Run call-planner before lighthouse customer calls to prep research questions
 - Run full-call-pipeline after every lighthouse customer call
 - Run PRD pipeline when evidence crosses threshold
 - Ingest Slack threads with product decisions
