@@ -463,6 +463,7 @@ On suspend, write state to `/context/pending/{pipeline}-{date}.pending.json`:
 | Prior art summaries | `/context/product-context/prior-art/{slug}-prior-art-{YYYY-MM-DD}.md` | Markdown + frontmatter |
 | Slack threads | `/context/product-context/slack-threads/{slug}-slack-thread-{YYYY-MM-DD}.md` | Markdown + frontmatter |
 | Templates | `/context/templates/` | Markdown |
+| Call plans | `/context/call-plans/{slug}-call-plan-{YYYY-MM-DD}.md` | Markdown |
 
 Canonical customer names use lowercase, hyphenated form: `[customer-1]`, `[customer-4]`, `[customer-2]`, `[customer-3]`, `[customer-internal]`.
 
@@ -707,6 +708,7 @@ All skills live in `/skills/{name}/SKILL.md`. Read the SKILL.md for detailed inp
 - `review-engineering-doc` — PM-perspective review comments + summary for engineering docs
 - `analyze-prior-art` — prior art analysis identifying reusable elements and gaps
 - `thought-partner` — optional product thinking framework; invoke with `--think` or `with thought partner` flag on any task
+- `call-planner` — generate Mom Test research questions for upcoming customer calls; three modes: by customer, by topic, by meeting context
 
 ### Refresh Tools
 - `refresh-fr-snapshot` — fetches current non-Closed [PRODUCT] [FR_PROJECT_KEY] issues and overwrites fr-snapshot.json; run before FR-related work
