@@ -664,10 +664,6 @@ Feedback and improvements welcome. The system is designed to be customized:
 - Extend frontmatter schema for your domain
 - Add custom analysis patterns
 
-## License
-
-[Your license here]
-
 ---
 
 **Questions?** Check the architecture document (`pm-agent-architecture.md`) for complete technical details.
