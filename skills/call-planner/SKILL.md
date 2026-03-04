@@ -162,7 +162,7 @@ Before including any question in the output, validate it against this checklist.
 | **Hypothetical future** | "If we added X, would that help?" | People can't predict their own behavior | "When did you last run into [problem X solves]? What did you do?" |
 | **Rating scale** | "How important is SBOM on 1-10?" | Produces meaningless numbers | "Walk me through what happens when a customer asks for your SBOM." |
 | **Feature wishlist** | "What features would you like to see?" | Gets generic answers, not real needs | "What's the most annoying part of your current workflow?" |
-| **Yes/no without follow-up** | "Do you need CIS benchmarks?" | Gets agreement without understanding | "How does your team handle CIS compliance today?" |
+| **Yes/no without follow-up** | "Do you need compliance benchmarks?" | Gets agreement without understanding | "How does your team handle compliance today?" |
 | **Leading question** | "Don't you think provider selection would be useful?" | Telegraphs the desired answer | "How do you decide which scanning tools to use?" |
 | **Compliment fishing** | "What do you think of our vulnerability scanning?" | Gets polite feedback, not real problems | "Tell me about the last vulnerability your team found. What happened next?" |
 | **Solution-first** | "Would a dashboard for X work for you?" | Skips understanding the problem | "When you need to check X, where do you go and what do you look for?" |
@@ -275,7 +275,7 @@ The "Traps to Avoid" section must be **context-specific**, not generic. Generate
 
 1. **Roadmap leaks**: If loaded context reveals planned features relevant to the call, warn against revealing them. Example: "Don't mention that [TOOL_A] integration is on the roadmap — ask about their workaround cost instead."
 2. **Confirmation bias**: If past calls established a strong signal, warn against seeking validation. Example: "Don't ask [CUSTOMER_1] to confirm they want provider selection — we already know they do. Ask what happens after they select a provider."
-3. **Pet topics**: If the customer repeatedly raises one topic, warn against spending the whole call there. Example: "CIS benchmarks will come up — acknowledge it, capture any new nuance, then steer to [gap area] where we have less data."
+3. **Pet topics**: If the customer repeatedly raises one topic, warn against spending the whole call there. Example: "Compliance benchmarks will come up — acknowledge it, capture any new nuance, then steer to [gap area] where we have less data."
 4. **Politeness traps**: If the customer is senior or the relationship is new, warn against accepting polite non-answers. Example: "If they say 'that would be nice,' follow up with 'tell me about the last time you needed that and didn't have it.'"
 5. **Solution mode**: If [PM_NAME] has strong opinions about the solution, warn against pitching. Example: "Don't describe the provider abstraction architecture — ask how they handle multi-tool scan results today."
 
@@ -333,8 +333,8 @@ This example shows every section with representative content. A real call plan w
 ### Context Summary
 
 **What we know:**
-* [CUSTOMER_1] is a Lighthouse FSI customer running [PRODUCT] in production across AWS and Azure
-* Their security architect is focused on CIS benchmarks (CIS 1 for containers, exploring CIS 2 for Linux via Ansible)
+* [CUSTOMER_1] is a Lighthouse FSI customer running [PRODUCT] in production across [CLOUD_PROVIDER_A] and [CLOUD_PROVIDER_B]
+* Their security architect is focused on compliance benchmarks (compliance Level 1 for containers, exploring compliance Level 2 for Linux via [CONFIG_MGMT_TOOL])
 * They run [TOOL_A] CLI inside [PRODUCT_SHORT] provisioners at build time as a workaround for the lack of native [TOOL_A] integration
 * They explicitly asked for "a selector option between [DEFAULT_SCANNER] and [TOOL_A] databases" (Dec 2025)
 * They want PDF vulnerability reports for compliance artifact distribution
@@ -345,7 +345,7 @@ This example shows every section with representative content. A real call plan w
 * **Decision gap**: Is the security architect the decision-maker for scanning tool changes, or does someone else approve?
 * **Effort gap**: How much time does their team spend maintaining the [TOOL_A] CLI workaround inside provisioners?
 * **Competitive gap**: Have they evaluated other registry-integrated scanning options? What did they look at?
-* **Timeline gap**: Is there an external audit or compliance deadline driving urgency on CIS benchmarks?
+* **Timeline gap**: Is there an external audit or compliance deadline driving urgency on compliance benchmarks?
 
 ---
 
@@ -353,7 +353,7 @@ This example shows every section with representative content. A real call plan w
 
 1. Understand the end-to-end workflow for how [CUSTOMER_1] consumes and acts on vulnerability scan results today
 2. Quantify the cost (time, people, friction) of their current [TOOL_A] CLI workaround
-3. Learn what's driving their CIS benchmark timeline — internal initiative or external compliance deadline
+3. Learn what's driving their compliance benchmark timeline — internal initiative or external compliance deadline
 4. Map the decision process for adopting new scanning integrations — who's involved, what they need to see
 
 ---
@@ -375,8 +375,8 @@ This example shows every section with representative content. A real call plan w
    * If they mention update frequency, ask: "How often do you need to touch that configuration, and who handles it?"
    * If they mention it breaking builds, ask: "What happened the last time it failed — how did you find out and how long did it take to fix?"
 
-2. `[cis-benchmarks]` You've been working on CIS 1 for containers — what prompted the move to also look at CIS 2 for Linux servers?
-   *(Learning: whether CIS expansion is internally driven or externally mandated)*
+2. `[compliance-benchmarks]` You've been working on compliance Level 1 for containers — what prompted the move to also look at compliance Level 2 for Linux servers?
+   *(Learning: whether compliance expansion is internally driven or externally mandated)*
    * If they mention an audit, ask: "When is that audit, and what specifically do they need to see from you?"
    * If they mention a security initiative, ask: "Who's sponsoring that initiative, and what does success look like for them?"
 
@@ -399,7 +399,7 @@ This example shows every section with representative content. A real call plan w
 
 1. `[effort]` How many people on your team spend time maintaining the [TOOL_A] scanning workaround today, and roughly how much of their time does it take?
 
-2. `[timeline]` What's driving the timeline on your CIS benchmark work — is there a specific audit date or compliance deadline you're working toward?
+2. `[timeline]` What's driving the timeline on your compliance benchmark work — is there a specific audit date or compliance deadline you're working toward?
 
 3. `[adoption]` If the [TOOL_A] scanning workflow changed tomorrow, what would your team need to do on your side to adapt — config changes, pipeline updates, approvals?
 
@@ -409,7 +409,7 @@ This example shows every section with representative content. A real call plan w
 
 * **Don't reveal that [TOOL_A] integration is on the roadmap** — ask about their workaround cost and pain instead. Let them describe the problem without knowing a solution is coming.
 * **Don't ask [CUSTOMER_1] to confirm they want provider selection** — we already know they do (Dec 2025 call). Instead, ask what happens *after* they'd select a provider — what does the downstream workflow look like?
-* **CIS benchmarks will come up — don't let it consume the call.** Acknowledge the topic, capture any new nuance (especially timeline/audit dates), then steer toward vulnerability scanning workflow gaps where we have less data.
+* **Compliance benchmarks will come up — don't let it consume the call.** Acknowledge the topic, capture any new nuance (especially timeline/audit dates), then steer toward vulnerability scanning workflow gaps where we have less data.
 * **Don't describe the provider abstraction architecture** — ask how they handle multi-source scan results today. We need to understand their mental model before showing them ours.
 * **If they say "that would be really useful," press further** — ask "tell me about the last time you needed that and didn't have it" to get a real story instead of a polite endorsement.
 

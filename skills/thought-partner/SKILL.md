@@ -25,7 +25,7 @@ The thought partner is invoked in one of three ways:
    - The thought partner runs first, suspends for approval, then the downstream task runs on resume
 
 2. **Standalone**: Invoke directly with no downstream task
-   - Example: `"Think through whether we should build native CIS benchmarking"`
+   - Example: `"Think through whether we should build native compliance benchmarking"`
    - Example: `"Run thought partner on channel assignment management"`
 
 3. **Explicit skill name**: `"Run thought-partner on [topic]"`

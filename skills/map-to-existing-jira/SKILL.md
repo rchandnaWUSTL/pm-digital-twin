@@ -89,7 +89,7 @@ The `open_issues_snapshot` is a JSON file containing all non-Closed [PROJECT_KEY
 |---|---|---|---|
 | "[TOOL_A] integration as scanner" | [PROJECT_KEY]-001 "Vulnerability Data in [PRODUCT]" | No match — flag for review | Too broad; [PROJECT_KEY]-001 covers vulnerability data generally |
 | "[TOOL_A] integration as scanner" | "Add [TOOL_A] as vulnerability scanner option" (hypothetical) | Match | Exact feature match |
-| "CIS benchmark compliance reporting" | [PROJECT_KEY]-002 "Image Compliance Reporting & Governance" | Match | CIS is explicitly in scope of this epic |
+| "Compliance benchmark reporting" | [PROJECT_KEY]-002 "Image Compliance Reporting & Governance" | Match | Compliance benchmarks are explicitly in scope of this epic |
 | "Multi-region image support" | [PROJECT_KEY]-2477 "[PRODUCT_SHORT] Multi-Region Support" | Match | Same feature |
 | "Fixed version column in vuln table" | [PROJECT_KEY]-2462 "Vuln Scanning Enhancements" | No match — create new | Specific UI ask, not the same as general enhancements |
 

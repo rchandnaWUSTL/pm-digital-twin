@@ -69,7 +69,7 @@ Classify signal by scanning for patterns:
 - Pattern: timestamp in header, quoted replies (`> `)
 
 ### Competitor Documentation
-- Contains product names ([TOOL_A], Qualys, Tenable, Snyk, etc.)
+- Contains product names ([VULN_PLATFORM_A], [VULN_SCANNER_A], [VULN_SCANNER_C], [VULN_SCANNER_B], etc.)
 - Pattern: "Feature: [name]", structured sections, marketing language
 
 ### Informal Notes
@@ -110,9 +110,9 @@ Generate 1-3 bullet points summarizing:
 ```markdown
 ## Key Takeaways
 
-* [TOOL_A] now offers CIS benchmark scanning as part of their vulnerability platform -- relevant to [PROJECT_KEY]-002 (Compliance Reporting epic)
-* Competitor feature parity: [TOOL_A] supports multi-cloud image scanning (AWS, Azure, GCP) with unified dashboard
-* Customer ask alignment: [CUSTOMER_1] uses [TOOL_A] for CIS benchmarks, this confirms market demand
+* [VULN_PLATFORM_A] now offers compliance benchmark scanning as part of their vulnerability platform -- relevant to [PROJECT_KEY]-002 (Compliance Reporting epic)
+* Competitor feature parity: [VULN_PLATFORM_A] supports multi-cloud image scanning ([CLOUD_PROVIDER_A], [CLOUD_PROVIDER_B], [CLOUD_PROVIDER_C]) with unified dashboard
+* Customer ask alignment: [CUSTOMER_1] uses [VULN_PLATFORM_A] for compliance benchmarks, this confirms market demand
 ```
 
 If content is too vague to extract takeaways:
@@ -147,9 +147,9 @@ Update the frontmatter received from router:
 Generate a concise summary:
 - Template: "[Content type] about [topic] and its relevance to [PRODUCT] context"
 - Examples:
-  - "Blog post about [TOOL_A]'s new CIS benchmark scanning feature and alignment with [PRODUCT] compliance work"
+  - "Blog post about [VULN_PLATFORM_A]'s new compliance benchmark scanning feature and alignment with [PRODUCT] compliance work"
   - "Email thread discussing [CUSTOMER_1]'s vulnerability scanning requirements"
-  - "Competitor analysis of Snyk's image scanning offering compared to [PRODUCT]"
+  - "Competitor analysis of [VULN_SCANNER_B]'s image scanning offering compared to [PRODUCT]"
 
 Extract from:
 1. First paragraph or sentence
@@ -238,15 +238,15 @@ Preserve original language. If content is entirely non-English:
 
 **Input content** (blog post excerpt):
 ```
-[TOOL_A] Announces CIS Benchmark Scanning for Cloud Workloads
+[VULN_PLATFORM_A] Announces Compliance Benchmark Scanning for Cloud Workloads
 
-By [TOOL_A] Security Team
+By [VULN_PLATFORM_A] Security Team
 Posted on February 15, 2026
 
-[TOOL_A] is excited to announce support for CIS benchmark scanning across AWS, Azure, and GCP machine images. Security teams can now validate their golden images against CIS profiles directly in the [TOOL_A] platform.
+[VULN_PLATFORM_A] is excited to announce support for compliance benchmark scanning across [CLOUD_PROVIDER_A], [CLOUD_PROVIDER_B], and [CLOUD_PROVIDER_C] machine images. Security teams can now validate their golden images against compliance profiles directly in the [VULN_PLATFORM_A] platform.
 
 Key features:
-- Support for CIS Level 1 and Level 2 profiles
+- Support for compliance Level 1 and Level 2 profiles
 - Automated remediation suggestions
 - Integration with existing vulnerability scanning workflows
 
@@ -256,8 +256,8 @@ This complements our existing CVE scanning and misconfiguration detection...
 **Output frontmatter**:
 ```yaml
 ---
-project_tag: "[TOOL_A] CIS Benchmark Scanning Announcement"
-one_line_description: "Blog post about [TOOL_A]'s new CIS benchmark scanning feature and alignment with [PRODUCT] compliance work"
+project_tag: "[VULN_PLATFORM_A] Compliance Benchmark Scanning Announcement"
+one_line_description: "Blog post about [VULN_PLATFORM_A]'s new compliance benchmark scanning feature and alignment with [PRODUCT] compliance work"
 doc_type: signal
 date_ingested: 2026-02-21
 related_customers: []
@@ -268,7 +268,7 @@ related_docs: []
 
 **Output body** (abbreviated):
 ```markdown
-# [TOOL_A] CIS Benchmark Scanning Announcement
+# [VULN_PLATFORM_A] Compliance Benchmark Scanning Announcement
 
 **Source:** Unknown
 **Type:** Blog
@@ -276,21 +276,21 @@ related_docs: []
 
 ## Key Takeaways
 
-* [TOOL_A] now offers CIS benchmark scanning (Level 1 & 2) for AWS, Azure, GCP machine images -- directly competitive with [PRODUCT] compliance roadmap
-* [TOOL_A] integrates CIS scanning with CVE scanning in a unified workflow -- aligns with [PROJECT_KEY]-002 (Compliance Reporting epic)
-* Market signal: CIS benchmarks for machine images are becoming table stakes for vulnerability platforms
+* [VULN_PLATFORM_A] now offers compliance benchmark scanning (Level 1 & 2) for [CLOUD_PROVIDER_A], [CLOUD_PROVIDER_B], [CLOUD_PROVIDER_C] machine images -- directly competitive with [PRODUCT] compliance roadmap
+* [VULN_PLATFORM_A] integrates compliance scanning with CVE scanning in a unified workflow -- aligns with [PROJECT_KEY]-002 (Compliance Reporting epic)
+* Market signal: Compliance benchmarks for machine images are becoming table stakes for vulnerability platforms
 
 ---
 
-## [TOOL_A] Announces CIS Benchmark Scanning for Cloud Workloads
+## [VULN_PLATFORM_A] Announces Compliance Benchmark Scanning for Cloud Workloads
 
-By [TOOL_A] Security Team
+By [VULN_PLATFORM_A] Security Team
 Posted on February 15, 2026
 
-[TOOL_A] is excited to announce support for CIS benchmark scanning across AWS, Azure, and GCP machine images. Security teams can now validate their golden images against CIS profiles directly in the [TOOL_A] platform.
+[VULN_PLATFORM_A] is excited to announce support for compliance benchmark scanning across [CLOUD_PROVIDER_A], [CLOUD_PROVIDER_B], and [CLOUD_PROVIDER_C] machine images. Security teams can now validate their golden images against compliance profiles directly in the [VULN_PLATFORM_A] platform.
 
 Key features:
-- Support for CIS Level 1 and Level 2 profiles
+- Support for compliance Level 1 and Level 2 profiles
 - Automated remediation suggestions
 - Integration with existing vulnerability scanning workflows
 

@@ -153,7 +153,7 @@ Product context files use wikilinks (Obsidian-style `[[target]]` syntax) to refe
 Use double brackets with the target identifier (no file extensions):
 
 ```markdown
-[[cis-benchmark-integration-prd-2026-02-20]]  → product context file
+[[compliance-benchmark-integration-prd-2026-02-20]]  → product context file
 [[[CUSTOMER_1]]]                          → customer profile
 [[[PROJECT_KEY]-002]]                                   → Jira issue
 [[[customer-1]-2026-02-15]]              → customer note
@@ -188,7 +188,7 @@ Both approaches are valid. Frontmatter enables automation (filtering, queries), 
 
 | Target Type | Format | Example | Resolves To |
 |---|---|---|---|
-| Product context | `[[filename-without-extension]]` | `[[cis-benchmark-prd-2026-02-20]]` | `/context/product-context/{subdir}/{filename}.md` |
+| Product context | `[[filename-without-extension]]` | `[[compliance-benchmark-prd-2026-02-20]]` | `/context/product-context/{subdir}/{filename}.md` |
 | Customer profile | `[[Canonical Name]]` | `[[[CUSTOMER_1]]]` | `/context/customer-profiles/[customer-1].json` |
 | Jira issue | `[[KEY-NUMBER]]` | `[[[PROJECT_KEY]-002]]` | Jira link (display only, not traversable) |
 | Customer note | `[[canonical-YYYY-MM-DD]]` | `[[[customer-1]-2026-02-15]]` | `/context/customer-notes/{filename}.md` |
@@ -239,8 +239,8 @@ Do NOT traverse for:
 ### Traversal Log Format
 
 ```
-prd-generator — loading product context for "CIS Benchmarking"...
-   Loaded: cis-benchmark-integration-prd-2026-02-20.md
+prd-generator — loading product context for "Compliance Benchmarking"...
+   Loaded: compliance-benchmark-integration-prd-2026-02-20.md
    Following wikilinks (1 hop):
       vulnerability-scanning-v2-eng-doc-2026-01-15.md
       [CUSTOMER_1] customer profile
@@ -428,7 +428,7 @@ On suspend, write state to `/context/pending/{pipeline}-{date}.pending.json`:
 "Approve the [CUSTOMER_1] Jira sync"
 -> sets approved: true on all actions, resumes pipeline, deletes .pending.json
 
-"Approve the [TOOL_A] selector issue but skip the CIS update"
+"Approve the [TOOL_A] selector issue but skip the compliance benchmark update"
 -> sets approved selectively, resumes with amended plan
 
 "Cancel the [CUSTOMER_1] Jira sync"
@@ -527,7 +527,7 @@ Epic (level 1)
 | Epic | Title | Relevant to |
 |---|---|---|
 | [PROJECT_KEY]-001 | [Epic 1: Vulnerability Data Integration] | Vuln scanning, vulnerability signals |
-| [PROJECT_KEY]-002 | [Epic 2: Image Compliance Reporting & Governance] | CIS benchmarks, compliance asks |
+| [PROJECT_KEY]-002 | [Epic 2: Image Compliance Reporting & Governance] | Compliance benchmarks, compliance asks |
 | [PROJECT_KEY]-003 | [Epic 3: Enterprise Readiness] | Auth, enterprise asks |
 | [PROJECT_KEY]-004 | [Epic 4: Enforced Provisioners - Phase 1] | Provisioner control |
 | [PROJECT_KEY]-005 | [Epic 5: Channel Assignment Management - Phase 1] | Channel management |
@@ -664,7 +664,7 @@ full-call-pipeline complete — [Customer], [date]
 | SBOM | Software Bill of Materials |
 | VMP | Validated Management Packs |
 | CV | Channel Versions |
-| AAP | Ansible Automation Platform |
+| AAP | [CONFIG_MGMT_TOOL] Automation Platform |
 | FSI | Financial Services Industry |
 
 ---

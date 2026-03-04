@@ -37,7 +37,7 @@ The formatted field notes markdown content for one or more calls.
    - Extract 1–3 direct quotes or close paraphrases as evidence
    - Count frequency across the input
    - List which customers mentioned it
-4. Keep themes meaningfully distinct — do not over-merge (e.g. "CIS benchmarks" and "vulnerability scanning" are separate themes even though both relate to security)
+4. Keep themes meaningfully distinct — do not over-merge (e.g. "compliance benchmarks" and "vulnerability scanning" are separate themes even though both relate to security)
 5. Do not invent themes not supported by the notes
 6. Order themes by frequency (highest first)
 

@@ -80,7 +80,7 @@ When format = "signal", perform a second classification pass to determine signal
 
 | Signal Type | Patterns | Confidence |
 |---|---|---|
-| **Market** | Competitor domains ([competitor-a.com], qualys.com, snyk.io), keywords: "announces" / "press release", blog structure (author + date), competitor product names | HIGH if domain + 1 keyword |
+| **Market** | Competitor domains ([competitor-a.com], [competitor-b.com], [competitor-c.com]), keywords: "announces" / "press release", blog structure (author + date), competitor product names | HIGH if domain + 1 keyword |
 | **Field** | Email headers (From:/To:/Subject:), customer names from profiles, keywords: "feedback from" / "customer asked", SA/SE names, @customer.com domains | HIGH if email headers OR customer name + feedback keyword |
 | **Engineering** | Technical jargon: "prototype" / "spike" / "POC", code blocks, architecture language: "design exploration" / "technical debt", @[company-domain.com] (non-GTM), @eng-team mentions | HIGH if code + technical keyword |
 

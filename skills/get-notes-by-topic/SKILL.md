@@ -7,7 +7,7 @@ Search across all customer notes for a given keyword or topic. Returns matching 
 
 ## Input
 
-A keyword or topic string (e.g. "CIS benchmarks", "[TOOL_A]", "vulnerability scanning").
+A keyword or topic string (e.g. "compliance benchmarks", "[TOOL_A]", "vulnerability scanning").
 
 ---
 

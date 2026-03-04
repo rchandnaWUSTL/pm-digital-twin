@@ -386,7 +386,7 @@ A: Existing [DEFAULT_SCANNER] results remain visible and are not deleted. New sc
 A: Dual-provider mode is planned for a future release. At launch, you select one active provider per registry.
 
 **Q: Does this change how vulnerability data appears in the UI?**
-A: The vulnerability tab displays data from your selected provider using a normalized format. Severity levels, affected packages, and remediation guidance are presented consistently regardless of provider. Provider-specific metadata (like [TOOL_A]'s CIS benchmark data) is preserved in detail views.
+A: The vulnerability tab displays data from your selected provider using a normalized format. Severity levels, affected packages, and remediation guidance are presented consistently regardless of provider. Provider-specific metadata (like [TOOL_A]'s compliance benchmark data) is preserved in detail views.
 
 ## Internal FAQs
 
@@ -405,7 +405,7 @@ A: Most competing image registry products (AWS ECR, Azure ACR) use built-in scan
 ## Appendix
 
 * Related Jira epic: [PROJECT_KEY]-001 -- Vulnerability Data in [PRODUCT]
-* Related Jira epic: [PROJECT_KEY]-002 -- Image Compliance Reporting & Governance (CIS benchmarks, adjacent scope)
+* Related Jira epic: [PROJECT_KEY]-002 -- Image Compliance Reporting & Governance (compliance benchmarks, adjacent scope)
 * Customer evidence: `/context/customer-profiles/[customer-1].json`, `/context/customer-profiles/[customer-4].json`
 
 ## Review Tracking

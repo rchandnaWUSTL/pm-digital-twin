@@ -114,7 +114,7 @@ Use this to pick the right parent epic when `suggested_epic` is provided:
 | Epic | Title | Use for |
 |---|---|---|
 | [PROJECT_KEY]-001 | Vulnerability Data in [PRODUCT] | Vuln scanning, [DEFAULT_SCANNER], [TOOL_A], CVE data |
-| [PROJECT_KEY]-002 | Image Compliance Reporting & Governance | CIS benchmarks, compliance reporting |
+| [PROJECT_KEY]-002 | Image Compliance Reporting & Governance | Compliance benchmarks, compliance reporting |
 | [PROJECT_KEY]-003 | Enterprise Readiness | Auth, SSO, enterprise security |
 | [PROJECT_KEY]-004 | Enforced Provisioners - Phase 1 | Provisioner control |
 | [PROJECT_KEY]-005 | Channel Assignment Management | Channel/version management |

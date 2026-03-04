@@ -43,10 +43,10 @@ Always correct these names regardless of how they appear in the input or Granola
 | [CUSTOMER_6], [CUSTOMER_6] misspelling variants | **[CUSTOMER_6]** |
 
 Lighthouse customers (use "our lighthouse customer [Name]" in the opener):
-- **[CUSTOMER_1]** — large bank; [PRODUCT] for AMI management, [TOOL_A] for vulnerability scanning and CIS benchmarks, GitHub Advanced Security
-- **[CUSTOMER_4]** — mortgage company; Windows/RHEL/Docker images, CIS2 compliance, Puppet, Orkes workflows
-- **[CUSTOMER_2]** — government IT provider; multi-cloud (AWS, Azure, VMware, OCI), GitHub Actions, Ansible for hardening
-- **[CUSTOMER_3]** — fintech/banking software; 100% Terraform-based [PRODUCT] usage, Nomad, Consul
+- **[CUSTOMER_1]** — large bank; [PRODUCT] for AMI management, [VULN_PLATFORM_A] for vulnerability scanning and compliance benchmarks, [VCS_SECURITY_TOOL]
+- **[CUSTOMER_4]** — mortgage company; Windows/RHEL/[CONTAINER_RUNTIME] images, compliance standards, [CONFIG_TOOL_B], Orkes workflows
+- **[CUSTOMER_2]** — government IT provider; multi-cloud ([CLOUD_PROVIDER_A], [CLOUD_PROVIDER_B], [VIRTUALIZATION_PLATFORM], [CLOUD_PROVIDER_D]), [CI_PLATFORM], [CONFIG_MGMT_TOOL] for hardening
+- **[CUSTOMER_3]** — fintech/banking software; 100% [IAC_TOOL]-based [PRODUCT] usage, [ORCHESTRATOR_A], [SERVICE_MESH]
 - **[CUSTOMER_INTERNAL]** — internal [COMPANY] engineering (Stride, Team Forge); [PRODUCT_SHORT] for CI runners, Coder for dev environments
 
 Non-lighthouse customers (use "we met with [Name]" or "we had a call with [Name]"):
@@ -100,10 +100,10 @@ Thanks,
 Common product name corrections:
 - "[PLATFORM] [product_short]" → "[PRODUCT]"
 - "[company]" → "[COMPANY]"
-- "github actions" → "GitHub Actions"
-- "terraform" → "Terraform"
-- "[platform] terraform" → "[PLATFORM] Terraform"
-- "ansible" → "Ansible"
+- "github actions" → "[CI_PLATFORM]"
+- "terraform" → "[IAC_TOOL]"
+- "[platform] terraform" → "[PLATFORM] [IAC_TOOL]"
+- "ansible" → "[CONFIG_MGMT_TOOL]"
 - "[policy_tool]" → "[POLICY_TOOL]"
 
 ---
@@ -117,29 +117,29 @@ Common product name corrections:
 Today we met with our lighthouse customer [CUSTOMER_1], we talked about self-service and their security and compliance requirements, and also spent some time discussing AI.
 Current [PRODUCT_SHORT] Implementation & Workflow
 * Built comprehensive documentation in Confluence for teams consuming [PRODUCT_SHORT] images
-   * Getting started guide shows Terraform integration with [PRODUCT] data source
-   * Teams use Terraform to reference AMIs instead of building their own
-* Cross-account access management via GitHub Actions
-   * Variable holds ~300 AWS account IDs for automatic AMI sharing
+   * Getting started guide shows [IAC_TOOL] integration with [PRODUCT] data source
+   * Teams use [IAC_TOOL] to reference AMIs instead of building their own
+* Cross-account access management via [CI_PLATFORM]
+   * Variable holds ~300 [CLOUD_PROVIDER_A] account IDs for automatic AMI sharing
    * Weekly builds grant KMS key and cross-account access to specified accounts
-   * Similar process for Azure subscriptions
+   * Similar process for [CLOUD_PROVIDER_B] subscriptions
 * Current pain points:
    * Still receiving one-off requests for custom images despite documentation
    * Teams not following standard process (e.g., unpatched ASTs)
 Security & Compliance Requirements
-* CIS benchmarking discussion:
-   * Security architect ([CONTACT_NAME]) heavily focused on CIS benchmarks for AWS/Azure
-   * Primary concern is Terraform configuration issues, not base image compliance
+* Compliance benchmarking discussion:
+   * Security architect ([CONTACT_NAME]) heavily focused on compliance benchmarks for [CLOUD_PROVIDER_A]/[CLOUD_PROVIDER_B]
+   * Primary concern is [IAC_TOOL] configuration issues, not base image compliance
    * Current image validation relies on vulnerability scanning only
 * Image security approval process:
    * Dual vulnerability scans during and after AMI build
    * Pipeline fails on critical vulnerabilities
    * License findings flagged but not enforced
-   * No current misconfiguration scanning for CIS benchmark compliance
+   * No current misconfiguration scanning for compliance benchmark compliance
 AI
 * [CUSTOMER_1] is interested in [COMPANY] AI features as design partner
 * Current AI usage:
-   * GitHub Copilot enabled for PR reviews and suggestions
+   * [VCS_PLATFORM] Copilot enabled for PR reviews and suggestions
 Thanks,
 [PM_NAME]
 ```
@@ -150,21 +150,21 @@ Met with our lighthouse customer [CUSTOMER_1] earlier today, covering self-servi
 
 Current [PRODUCT_SHORT] Implementation & Workflow
 * Built comprehensive Confluence documentation for teams consuming [PRODUCT_SHORT] images
-   * Getting started guide covers Terraform integration with [PRODUCT] data source
-   * Teams reference AMIs via Terraform instead of building their own
-* Cross-account access managed via GitHub Actions
-   * Variable holds ~300 AWS account IDs for automatic AMI sharing
+   * Getting started guide covers [IAC_TOOL] integration with [PRODUCT] data source
+   * Teams reference AMIs via [IAC_TOOL] instead of building their own
+* Cross-account access managed via [CI_PLATFORM]
+   * Variable holds ~300 [CLOUD_PROVIDER_A] account IDs for automatic AMI sharing
    * Weekly builds grant KMS key and cross-account access to specified accounts
-   * Similar process in place for Azure subscriptions
+   * Similar process in place for [CLOUD_PROVIDER_B] subscriptions
 * Current pain points:
    * Still receiving one-off requests for custom images despite documentation
    * Teams not following standard process (e.g., unpatched ASTs)
 
 Security & Compliance Requirements
-* CIS benchmarking discussion with security architect [CONTACT_NAME]:
-   * Primary concern is Terraform configuration issues, not base image compliance
+* Compliance benchmarking discussion with security architect [CONTACT_NAME]:
+   * Primary concern is [IAC_TOOL] configuration issues, not base image compliance
    * Current image validation relies on vulnerability scanning only
-   * No misconfiguration scanning for CIS benchmark compliance today
+   * No misconfiguration scanning for compliance benchmark compliance today
 * Image security approval process:
    * Dual vulnerability scans run during and after AMI build
    * Pipeline fails on critical vulnerabilities
@@ -172,7 +172,7 @@ Security & Compliance Requirements
 
 AI
 * [CUSTOMER_1] is interested in [COMPANY] AI features as a design partner
-* Currently using GitHub Copilot for PR reviews and suggestions
+* Currently using [VCS_PLATFORM] Copilot for PR reviews and suggestions
 
 Thanks,
 [PM_NAME]
@@ -190,19 +190,19 @@ Met with our lighthouse customer [CUSTOMER_2] on Monday, covering a concern arou
    * Current limitation: can only assign org-level or project-level permissions
    * Want granular permissions per [PLATFORM] product (different access levels for [PRODUCT_SHORT] vs [PRODUCT_B] vs [PRODUCT_C])
    * Currently working around by creating separate projects per team
-   * Comparing to [PLATFORM] Terraform's workspace-level permission granularity
+   * Comparing to [PLATFORM] [IAC_TOOL]'s workspace-level permission granularity
 Current [PRODUCT_SHORT] Implementation & Challenges
 * Image building setup across platforms:
-   * AWS & Azure: scheduled builds via GitHub Actions pipeline
-   * VMware: manual builds, still using Azure DevOps pipeline
+   * [CLOUD_PROVIDER_A] & [CLOUD_PROVIDER_B]: scheduled builds via [CI_PLATFORM] pipeline
+   * [VIRTUALIZATION_PLATFORM]: manual builds, still using [CLOUD_PROVIDER_B] DevOps pipeline
    * Build separate templates per platform due to different base images, agents, and customization steps
-* VMware-specific considerations:
-   * Pagefile config in VMware image: questioning if removal is possible
+* [VIRTUALIZATION_PLATFORM]-specific considerations:
+   * Pagefile config in [VIRTUALIZATION_PLATFORM] image: questioning if removal is possible
    * Looking into MAK key from Logic Pass to replace ISO file approach
-   * Migration from Azure DevOps to GitHub planned but lower priority (smaller footprint)
+   * Migration from [CLOUD_PROVIDER_B] DevOps to [VCS_PLATFORM] planned but lower priority (smaller footprint)
    * VCD requires private runner with file access vs cloud APIs
 * Compliance handled by separate OS teams post-deployment
-   * Run Ansible playbooks to harden images after server provisioning
+   * Run [CONFIG_MGMT_TOOL] playbooks to harden images after server provisioning
    * Not currently priority for image-level vulnerability scanning
 Other
 * Consider bringing [PLATFORM] RBAC PM on for RBAC discussion in future call
@@ -219,19 +219,19 @@ Met with our lighthouse customer [CUSTOMER_2] this Monday, covering [PLATFORM] R
 * Currently limited to org-level or project-level permission assignments
    * Want granular permissions per [PLATFORM] product (e.g., different access levels for [PRODUCT_SHORT] vs [PRODUCT_B] vs [PRODUCT_C])
    * Working around today by creating separate projects per team
-   * Comparing unfavorably to [PLATFORM] Terraform's workspace-level permission granularity
+   * Comparing unfavorably to [PLATFORM] [IAC_TOOL]'s workspace-level permission granularity
 
 Current [PRODUCT_SHORT] Implementation & Challenges
 * Multi-platform image building setup:
-   * AWS & Azure: scheduled builds via GitHub Actions
-   * VMware: still on manual builds via Azure DevOps pipeline
+   * [CLOUD_PROVIDER_A] & [CLOUD_PROVIDER_B]: scheduled builds via [CI_PLATFORM]
+   * [VIRTUALIZATION_PLATFORM]: still on manual builds via [CLOUD_PROVIDER_B] DevOps pipeline
    * Separate templates per platform due to different base images, agents, and customization steps
-* VMware-specific considerations:
-   * Evaluating pagefile removal from VMware images
+* [VIRTUALIZATION_PLATFORM]-specific considerations:
+   * Evaluating pagefile removal from [VIRTUALIZATION_PLATFORM] images
    * Exploring MAK key from Logic Pass to replace ISO file approach
-   * Azure DevOps to GitHub migration planned but lower priority given smaller footprint
+   * [CLOUD_PROVIDER_B] DevOps to [VCS_PLATFORM] migration planned but lower priority given smaller footprint
    * VCD requires private runner with file access rather than cloud APIs
-* Compliance handled post-deployment by separate OS teams running Ansible playbooks to harden images
+* Compliance handled post-deployment by separate OS teams running [CONFIG_MGMT_TOOL] playbooks to harden images
    * Image-level vulnerability scanning not currently a priority
 
 Other
@@ -255,19 +255,19 @@ Sending out some late notes here. Met with [CUSTOMER_3] on Jan 27th. We discusse
 * Expanding [PRODUCT_SHORT] usage beyond current scope
    * Different image for traffic management
    * Plans to expand from private to public ingress
-Feature Request: Metadata Lookup in Terraform Data Source
-* [CUSTOMER_3] team needs build label filtering capability in [PRODUCT] Terraform data source
+Feature Request: Metadata Lookup in [IAC_TOOL] Data Source
+* [CUSTOMER_3] team needs build label filtering capability in [PRODUCT] [IAC_TOOL] data source
    * Currently using workaround with version info embedded in channel names
-   * Want to search/filter by Nomad version, Consul version in build labels
+   * Want to search/filter by [ORCHESTRATOR_A] version, [SERVICE_MESH] version in build labels
 * Current workaround shown via screen share
-   * Using AWS AMI data lookup with filter on description field
-   * Parameterizing Nomad/Consul versions in locals.tf
+   * Using [CLOUD_PROVIDER_A] AMI data lookup with filter on description field
+   * Parameterizing [ORCHESTRATOR_A]/[SERVICE_MESH] versions in locals.tf
    * Channel names include version info as hack
 * Benefits would extend to other use cases
    * GitLab runner version management for staged rollouts
    * Software bill of materials filtering
    * Version pinning across environments
-* Usage pattern: 100% Terraform-based interaction with [PRODUCT]
+* Usage pattern: 100% [IAC_TOOL]-based interaction with [PRODUCT]
 Thanks,
 [PM_NAME]
 ```
@@ -282,19 +282,19 @@ Met with our lighthouse customer [CUSTOMER_3] on January 27th, covering golden i
 * Expanding [PRODUCT_SHORT] usage to additional image types (e.g., traffic management)
    * Plans to expand from private to public ingress
 
-Feature Request: Metadata Lookup in Terraform Data Source
-* [CUSTOMER_3] needs build label filtering capability in the [PRODUCT] Terraform data source
+Feature Request: Metadata Lookup in [IAC_TOOL] Data Source
+* [CUSTOMER_3] needs build label filtering capability in the [PRODUCT] [IAC_TOOL] data source
    * Currently embedding version info in channel names as a workaround
-   * Want to filter by Nomad version, Consul version in build labels for cleaner pipelines
+   * Want to filter by [ORCHESTRATOR_A] version, [SERVICE_MESH] version in build labels for cleaner pipelines
 * Current workaround (shown via screen share):
-   * AWS AMI data lookup with description field filter
-   * Nomad/Consul versions parameterized in locals.tf
+   * [CLOUD_PROVIDER_A] AMI data lookup with description field filter
+   * [ORCHESTRATOR_A]/[SERVICE_MESH] versions parameterized in locals.tf
    * Channel names carry version info as a hack
 * This feature would unlock additional use cases:
    * GitLab runner version management for staged rollouts
    * Software bill of materials filtering
    * Version pinning across environments
-* Note: [CUSTOMER_3]'s interaction with [PRODUCT] is 100% Terraform-based
+* Note: [CUSTOMER_3]'s interaction with [PRODUCT] is 100% [IAC_TOOL]-based
 
 Thanks,
 [PM_NAME]
@@ -310,9 +310,9 @@ Met with our internal [COMPANY] customer to understand how developer self servic
 Team Reorganization & New Structure
 * [COMPANY] platform teams completely rechartered and renamed
    * PSS became Stride team under Randy's management (~6 people)
-      * Focus: GitHub Actions CI runners (still use [PRODUCT_SHORT] underneath)
+      * Focus: [CI_PLATFORM] CI runners (still use [PRODUCT_SHORT] underneath)
       * No longer own base images
-      * Working on IBM versions of CI runners as IBM migrates to GitHub Actions
+      * Working on IBM versions of CI runners as IBM migrates to [CI_PLATFORM]
    * New Team Forge under current leadership (4 people)
       * Focus: Development environments, especially remote development environments
 Current Development Environment Strategy
@@ -322,7 +322,7 @@ Current Development Environment Strategy
    * Developers pick Coder template, get compute (EC2, K8s pod, container, Fargate) abstracted away
    * Environment built from pre-built AMI maintained by template owners
    * End users never see or choose the AMI directly
-* Today developers use raw [PRODUCT_SHORT]/Terraform with no standardized starting point
+* Today developers use raw [PRODUCT_SHORT]/[IAC_TOOL] with no standardized starting point
    * PRDE will be absorbed by Coder around Q3
    * Coder evaluation started 6+ months ago; opening to all [COMPANY] Engineering this quarter
 [PRODUCT_SHORT] Integration & Future Plans
@@ -332,7 +332,7 @@ Current Development Environment Strategy
 * Long-term IBM transition:
    * Base images replaced by IBM-provided RHEL images
    * [COMPANY] builds golden images on top of IBM distribution
-   * All AMIs to be built in a single AWS account with cross-account access
+   * All AMIs to be built in a single [CLOUD_PROVIDER_A] account with cross-account access
 Thanks,
 [PM_NAME]
 ```
@@ -344,8 +344,8 @@ Met with our internal [COMPANY] customer to understand how developer self-servic
 Team Reorganization & New Structure
 * [COMPANY] platform teams fully rechartered and renamed:
    * PSS to Stride team (~6 people, under Randy)
-      * Focus: GitHub Actions CI runners ([PRODUCT_SHORT] underneath); no longer own base images
-      * Working on IBM versions of CI runners as IBM migrates to GitHub Actions
+      * Focus: [CI_PLATFORM] CI runners ([PRODUCT_SHORT] underneath); no longer own base images
+      * Working on IBM versions of CI runners as IBM migrates to [CI_PLATFORM]
    * New Team Forge (4 people)
       * Focus: Development environments, especially remote dev environments
 
@@ -354,7 +354,7 @@ Current Development Environment Strategy
 * Development environment workflow via Coder:
    * Developers pick a Coder template, get compute (EC2, K8s pod, container, Fargate) abstracted away
    * Environment built from pre-built AMI maintained by template owners; end users never see the AMI directly
-* Today developers use raw [PRODUCT_SHORT]/Terraform with no standardized starting point
+* Today developers use raw [PRODUCT_SHORT]/[IAC_TOOL] with no standardized starting point
    * PRDE will be absorbed by Coder around Q3
    * Coder evaluation started 6+ months ago; opening to all [COMPANY] Engineering this quarter
 
@@ -363,7 +363,7 @@ Current Development Environment Strategy
 * Template owners own the AMI; teams rendering templates do not
 * Long-term IBM transition:
    * Base images replaced by IBM-provided RHEL images; [COMPANY] builds golden images on top
-   * All AMIs to be built in a single AWS account with cross-account access
+   * All AMIs to be built in a single [CLOUD_PROVIDER_A] account with cross-account access
 
 Thanks,
 [PM_NAME]
@@ -375,7 +375,7 @@ Thanks,
 
 **Input:**
 ```
-Met with our lighthouse customer [CUSTOMER_1] earlier today, covering vulnerability management, [PRODUCT_SHORT]+TF requests, AAP requests, and more.
+Met with our lighthouse customer [CUSTOMER_1] earlier today, covering vulnerability management, [PRODUCT_SHORT]+[IAC_TOOL] requests, [CONFIG_MGMT_TOOL] Automation Platform requests, and more.
 Customer feedback on vulnerability scanning [TOOL_A] integration
 * Strong interest in using [TOOL_A] for vulnerability scanning instead of [DEFAULT_SCANNER]
    * Already [TOOL_A] customers, required for certain scan types in their organization
@@ -384,21 +384,21 @@ Cross-product integration opportunities
 * [PRODUCT] image tracking highly valuable
    * Risk team wants proof of [PRODUCT_SHORT] image adoption vs public images
    * Currently using tags ("built with [PRODUCT]") for compliance reporting
-   * Terraform could show which EC2 instances use [PRODUCT] data sources vs non-approved images
+   * [IAC_TOOL] could show which EC2 instances use [PRODUCT] data sources vs non-approved images
 * [POLICY_TOOL] policy integration with [PRODUCT_SHORT]
    * Interest in restricting [PRODUCT_SHORT] usage across teams
-GitHub Advanced Security implementation
+[VCS_SECURITY_TOOL] implementation
 * Using for secret scanning across PRs - stops commits with detected secrets
 * Dependabot automatically opens PRs for package updates
 AI Use at [CUSTOMER_1]
 * Copilot access requires 5-6 training courses + repo security compliance
 * Office365 chat used org-wide, IDE integration gated by training
-Ansible automation challenges & opportunities
-* Current AAP (Ansible Automation Platform) blocked by authentication
-   * Only supports GitHub integration via username/password
+[CONFIG_MGMT_TOOL] automation challenges & opportunities
+* Current [CONFIG_MGMT_TOOL] Automation Platform blocked by authentication
+   * Only supports [VCS_PLATFORM] integration via username/password
    * Security requires OAuth/SSO - submitted feature request with no response
-* Potential [PRODUCT_SHORT] + Ansible integration
-   * Use Ansible provisioner for dynamic vulnerability remediation
+* Potential [PRODUCT_SHORT] + [CONFIG_MGMT_TOOL] integration
+   * Use [CONFIG_MGMT_TOOL] provisioner for dynamic vulnerability remediation
    * Post-build playbooks could resolve detected CVEs and retry builds
 Note
 * [CUSTOMER_1] will likely bring their security architect to the next call as he's interested in new [TOOL_A] use cases.
@@ -408,7 +408,7 @@ Thanks,
 
 **Output:**
 ```
-Met with our lighthouse customer [CUSTOMER_1] earlier today, covering vulnerability management, [PRODUCT_SHORT] + Terraform requests, Ansible Automation Platform challenges, and more.
+Met with our lighthouse customer [CUSTOMER_1] earlier today, covering vulnerability management, [PRODUCT_SHORT] + [IAC_TOOL] requests, [CONFIG_MGMT_TOOL] Automation Platform challenges, and more.
 
 Vulnerability Scanning & [TOOL_A] Integration
 * Strong interest in using [TOOL_A] for vulnerability scanning instead of [DEFAULT_SCANNER]
@@ -418,10 +418,10 @@ Vulnerability Scanning & [TOOL_A] Integration
 Cross-Product Integration Opportunities
 * [PRODUCT] image tracking highly valuable to their risk team
    * Currently tagging images ("built with [PRODUCT]") for compliance reporting
-   * Interested in Terraform showing which EC2 instances use [PRODUCT] data sources vs non-approved images
+   * Interested in [IAC_TOOL] showing which EC2 instances use [PRODUCT] data sources vs non-approved images
 * Interest in [POLICY_TOOL] policy integration to restrict [PRODUCT_SHORT] usage across teams
 
-GitHub Advanced Security
+[VCS_SECURITY_TOOL]
 * Using for secret scanning across PRs — stops commits with detected secrets
 * Dependabot automatically opens PRs for package updates
 
@@ -429,12 +429,12 @@ AI Use at [CUSTOMER_1]
 * Copilot access requires 5-6 training courses + repo security compliance
 * Office365 chat used org-wide; IDE integration gated by training completion
 
-Ansible Automation Platform Challenges & Opportunities
-* AAP currently blocked by authentication limitations
-   * Only supports GitHub integration via username/password
+[CONFIG_MGMT_TOOL] Automation Platform Challenges & Opportunities
+* [CONFIG_MGMT_TOOL] Automation Platform currently blocked by authentication limitations
+   * Only supports [VCS_PLATFORM] integration via username/password
    * Security requires OAuth/SSO — feature request submitted with no response
-* Potential [PRODUCT_SHORT] + Ansible integration:
-   * Ansible provisioner for dynamic vulnerability remediation during builds
+* Potential [PRODUCT_SHORT] + [CONFIG_MGMT_TOOL] integration:
+   * [CONFIG_MGMT_TOOL] provisioner for dynamic vulnerability remediation during builds
    * Post-build playbooks to resolve detected CVEs and retry builds
 
 Note
@@ -453,14 +453,14 @@ Thanks,
 This Monday we met with our lighthouse customer [CUSTOMER_2], covering how they enable self service of images.
 Customer Usage & Feedback
 * [CUSTOMER_2] team continues using [PRODUCT] for image management
-* Evaluated [PLATFORM] Terraform run task but decided against implementation
+* Evaluated [PLATFORM] [IAC_TOOL] run task but decided against implementation
    * Concerns about team confusion with advisory warnings
    * No strong business need identified
 * Current workflow working well
-   * Teams reference latest channel via Terraform data source
+   * Teams reference latest channel via [IAC_TOOL] data source
    * Ignore blocks prevent destructive AMI changes
 Cost Optimization & Automation
-* Implemented Lambda function for automated image cleanup in AWS
+* Implemented Lambda function for automated image cleanup in [CLOUD_PROVIDER_A]
    * Deletes unused images after set time period
    * Revokes corresponding [PRODUCT] references via API
    * Saves thousands annually in storage costs
@@ -471,7 +471,7 @@ Integration Challenges
    * Considering basic API integration instead
    * Need better request management with approval flows and identity database
 * [PRODUCT_B] evaluation completed
-   * Decided on no-code modules in [PLATFORM] Terraform instead
+   * Decided on no-code modules in [PLATFORM] [IAC_TOOL] instead
    * Integration issues: variable descriptions not visible in [PRODUCT_B] forms
 Thanks,
 [PM_NAME]
@@ -483,13 +483,13 @@ Met with our lighthouse customer [CUSTOMER_2] this Monday, covering how they ena
 
 Customer Usage & Feedback
 * Continuing to use [PRODUCT] for image management
-* Evaluated [PLATFORM] Terraform run task but decided against it
+* Evaluated [PLATFORM] [IAC_TOOL] run task but decided against it
    * Concerns about team confusion with advisory warnings
    * No strong business need identified
-* Current workflow working well — teams reference latest channel via Terraform data source, ignore blocks prevent destructive AMI changes
+* Current workflow working well — teams reference latest channel via [IAC_TOOL] data source, ignore blocks prevent destructive AMI changes
 
 Cost Optimization & Automation
-* Implemented Lambda function for automated image cleanup in AWS
+* Implemented Lambda function for automated image cleanup in [CLOUD_PROVIDER_A]
    * Deletes unused images after a set time period, revokes corresponding [PRODUCT] references via API
    * Saves thousands annually in storage costs; considering expansion to other clouds
 * Manual channel creation but channels auto-update with new builds
@@ -497,7 +497,7 @@ Cost Optimization & Automation
 Integration Challenges
 * ServiceNow integration attempts unsuccessful — considering basic API integration instead
    * Need better request management with approval flows and identity database
-* [PRODUCT_B] evaluation complete — decided on no-code modules in [PLATFORM] Terraform instead
+* [PRODUCT_B] evaluation complete — decided on no-code modules in [PLATFORM] [IAC_TOOL] instead
    * Blocker: variable descriptions not visible in [PRODUCT_B] forms
 
 Thanks,
@@ -513,10 +513,10 @@ Thanks,
 On December 4th we had a call with our lighthouse customer [CUSTOMER_4]. We covered pipelines and compliance.
 [PRODUCT_SHORT] Pipeline Implementation
 * Got pipeline approved for [PRODUCT_SHORT] builds
-* Starting with Windows images, then RHEL, then Docker containers
+* Starting with Windows images, then RHEL, then [CONTAINER_RUNTIME] containers
 * Currently doing local testing on Windows 2019 templates
    * Successfully ran Windows [PRODUCT_SHORT] template builds locally vs. on server
-   * Windows 2019 template has reboot issue after Microsoft updates — VMware issue suspected
+   * Windows 2019 template has reboot issue after Microsoft updates — [VIRTUALIZATION_PLATFORM] issue suspected
 * Plan: automate builds through Orkes workflows
 * [PRODUCT] integration working well
    * Metadata uploads automatically; easy configuration with [PLATFORM] client ID and secret
@@ -524,8 +524,8 @@ On December 4th we had a call with our lighthouse customer [CUSTOMER_4]. We cove
    * Uses version numbering (0.0.1, 0.0.2)
    * Monthly patching cycle: dev to stage to prod
 Security & Compliance Standards
-* Follow CIS2 profile for compliance standards
-* Post-building compliance handled through Puppet; Puppet team purchased new SCM feature expecting it to solve compliance automation
+* Follow compliance standards profile for security compliance
+* Post-building compliance handled through [CONFIG_TOOL_B]; [CONFIG_TOOL_B] team purchased new SCM feature expecting it to solve compliance automation
 * Template-level security compliance would be a valuable addition
    * Currently only get compliance feedback from separate security team
 Thanks,
@@ -537,9 +537,9 @@ Thanks,
 Met with our lighthouse customer [CUSTOMER_4] on December 4th, covering [PRODUCT_SHORT] pipeline implementation and compliance standards.
 
 [PRODUCT_SHORT] Pipeline Implementation
-* Pipeline approved — starting with Windows images, then RHEL, then Docker containers
+* Pipeline approved — starting with Windows images, then RHEL, then [CONTAINER_RUNTIME] containers
 * Local testing on Windows 2019 templates underway
-   * Builds running successfully locally; reboot issue after Microsoft updates suspected to be VMware
+   * Builds running successfully locally; reboot issue after Microsoft updates suspected to be [VIRTUALIZATION_PLATFORM]
 * Plan to automate builds through Orkes workflows
 * [PRODUCT] integration working well — metadata uploads automatically, easy configuration with [PLATFORM] client ID and secret
 * Image promotion through dev/staging/prod channels straightforward
@@ -547,8 +547,8 @@ Met with our lighthouse customer [CUSTOMER_4] on December 4th, covering [PRODUCT
    * Monthly patching cycle: dev to stage to prod
 
 Security & Compliance Standards
-* Following CIS2 profile for compliance
-* Post-build compliance managed via Puppet; Puppet team recently purchased SCM feature expecting it to solve compliance automation
+* Following compliance standards profile for security compliance
+* Post-build compliance managed via [CONFIG_TOOL_B]; [CONFIG_TOOL_B] team recently purchased SCM feature expecting it to solve compliance automation
 * Template-level security compliance would be a valuable addition — currently rely entirely on separate security team for compliance feedback
 
 Thanks,
@@ -594,10 +594,10 @@ Thanks,
 ```
 On November 17th we met with our lighthouse customer [CUSTOMER_2] to go over our vulnerability scanning designs, though we didn't receive much feedback sadly.
 Customer Infrastructure & Platform Usage
-* Multi-cloud deployment focus: OCI, Amazon / AWS, Windows
+* Multi-cloud deployment focus: [CLOUD_PROVIDER_D], [CLOUD_PROVIDER_A], Windows
 * Added cloud directory to deployment scope
 * Using [PRODUCT_SHORT] templates per platform (not everything transferable)
-* Terraform as main tool alongside [PRODUCT_SHORT]
+* [IAC_TOOL] as main tool alongside [PRODUCT_SHORT]
 Security & Vulnerability Management
 * Security team provides requirements but our customer is not directly involved in vulnerability checks
 * Concerns about third-party security applications in [PRODUCT_SHORT] process
@@ -612,9 +612,9 @@ Thanks,
 Met with our lighthouse customer [CUSTOMER_2] on November 17th to review our vulnerability scanning designs, though we didn't receive much feedback.
 
 Customer Infrastructure & Platform Usage
-* Multi-cloud deployment across OCI, AWS, and Windows; recently added cloud directory to scope
+* Multi-cloud deployment across [CLOUD_PROVIDER_D], [CLOUD_PROVIDER_A], and Windows; recently added cloud directory to scope
 * Using separate [PRODUCT_SHORT] templates per platform — not all configuration is transferable across clouds
-* Terraform is their primary tool alongside [PRODUCT_SHORT]
+* [IAC_TOOL] is their primary tool alongside [PRODUCT_SHORT]
 
 Security & Vulnerability Management
 * Security team owns requirements; [CUSTOMER_2] is not directly involved in vulnerability checks day-to-day
@@ -637,12 +637,12 @@ Product Status and Usage
 * [CUSTOMER_1] confirmed everything working well with current product
 * SBOM storage feature
    * Haven't tried yet but have upcoming use case
-   * Azure pipeline for Windows Server 2022 experiencing [TOOL_A] false positives on curl vulnerability
-   * Planning to upgrade to latest [PRODUCT_SHORT] and test SBOM during upcoming Sprint with Docker functionality
-CIS Benchmarks and Compliance
-* [CUSTOMER_1] uses [TOOL_A] for CIS benchmark scanning
-   * Machine config scan type shows CIS benchmarks and misconfigurations
-   * Azure CIS benchmarks better defined than AWS
+   * [CLOUD_PROVIDER_B] pipeline for Windows Server 2022 experiencing [TOOL_A] false positives on curl vulnerability
+   * Planning to upgrade to latest [PRODUCT_SHORT] and test SBOM during upcoming Sprint with [CONTAINER_RUNTIME] functionality
+Compliance Benchmarks and Compliance
+* [CUSTOMER_1] uses [TOOL_A] for compliance benchmark scanning
+   * Machine config scan type shows compliance benchmarks and misconfigurations
+   * [CLOUD_PROVIDER_B] compliance benchmarks better defined than [CLOUD_PROVIDER_A]
    * Pipelines set to fail if security policies not met
 * Current workflow:
    * Security defines which benchmarks to pass
@@ -661,8 +661,8 @@ Vulnerability Scanning UI Design Review
 * Customer interested in early testing opportunity
 AI and Platform Engineering Resources
 * Platform engineering: PlatformEngineering YouTube channel, Tech World with Nana
-* AI tools: NetworkChuck's recent AI videos highlighted; Unity MCP project on GitHub
-* Company AI adoption: Copilot for Office 365 and GitHub coming soon; cloud director Rob exploring Claude; currently using AWS Bedrock for knowledge base building
+* AI tools: NetworkChuck's recent AI videos highlighted; Unity MCP project on [VCS_PLATFORM]
+* Company AI adoption: Copilot for Office 365 and [VCS_PLATFORM] coming soon; cloud director Rob exploring Claude; currently using [CLOUD_PROVIDER_A] Bedrock for knowledge base building
 Thanks,
 [PM_NAME]
 ```
@@ -674,12 +674,12 @@ Met with our lighthouse customer [CUSTOMER_1] on November 12th to review our vul
 Product Status & Usage
 * Everything working well with the current product
 * SBOM storage feature not yet tried but an upcoming use case is identified
-   * Azure pipeline for Windows Server 2022 experiencing [TOOL_A] false positives on the curl vulnerability
-   * Planning to upgrade to latest [PRODUCT_SHORT] and test SBOM with Docker functionality in an upcoming sprint
+   * [CLOUD_PROVIDER_B] pipeline for Windows Server 2022 experiencing [TOOL_A] false positives on the curl vulnerability
+   * Planning to upgrade to latest [PRODUCT_SHORT] and test SBOM with [CONTAINER_RUNTIME] functionality in an upcoming sprint
 
-CIS Benchmarks & Compliance
-* Using [TOOL_A] for CIS benchmark scanning via machine config scan type
-   * Azure CIS benchmarks better defined than AWS
+Compliance Benchmarks & Compliance
+* Using [TOOL_A] for compliance benchmark scanning via machine config scan type
+   * [CLOUD_PROVIDER_B] compliance benchmarks better defined than [CLOUD_PROVIDER_A]
    * Pipelines set to fail if security policies not met
 * Workflow: security team defines benchmarks, [TOOL_A] CLI runs inside provisioner at build time, automated enforcement, no manual reporting
 
@@ -697,8 +697,8 @@ Vulnerability Scanning UI Design Review
 AI & Platform Engineering Resources
 * The team shared some resources they've found valuable:
    * Platform engineering: PlatformEngineering YouTube channel, Tech World with Nana
-   * AI: NetworkChuck's recent AI videos, Unity MCP project on GitHub
-   * Company AI adoption: Copilot for Office 365 and GitHub coming soon; cloud director Rob exploring Claude; currently using AWS Bedrock for knowledge base building
+   * AI: NetworkChuck's recent AI videos, Unity MCP project on [VCS_PLATFORM]
+   * Company AI adoption: Copilot for Office 365 and [VCS_PLATFORM] coming soon; cloud director Rob exploring Claude; currently using [CLOUD_PROVIDER_A] Bedrock for knowledge base building
 
 Thanks,
 [PM_NAME]
@@ -711,16 +711,16 @@ Thanks,
 **Input:**
 ```
 On November 6th we met with our lighthouse customer [CUSTOMER_4] to go over our vulnerability scanning designs.
-VMware Migration & Current Work
+[VIRTUALIZATION_PLATFORM] Migration & Current Work
 * DevOps ticket submitted for [PRODUCT_SHORT] pipeline setup — waiting for approvals
-* VMware 7 to 8 migration in progress
+* [VIRTUALIZATION_PLATFORM] 7 to 8 migration in progress
    * Template-level service changes required
-   * Encountering errors (VMware-related, not [PRODUCT_SHORT])
-* Previous work: VM lifecycle automation — server build workflows with automated AD joining, Puppet installation, SolarWinds integration
+   * Encountering errors ([VIRTUALIZATION_PLATFORM]-related, not [PRODUCT_SHORT])
+* Previous work: VM lifecycle automation — server build workflows with automated AD joining, [CONFIG_TOOL_B] installation, SolarWinds integration
 Vulnerability Scanning Feature Feedback
 * Current security compliance: 20% (need 80% for production use) — moving to Windows Server 2025
 * Template scanning preferred over runtime scanning
-* CIS profile usage confirmed — CIS 2 via Ansible for Linux servers
+* Compliance profile usage confirmed — security compliance via [CONFIG_MGMT_TOOL] for Linux servers
 * Reporting requirements:
    * PDF reports preferred (limited [PLATFORM] portal access)
    * Weekly/monthly email summaries needed
@@ -741,15 +741,15 @@ Thanks,
 ```
 Met with our lighthouse customer [CUSTOMER_4] on November 6th to review our vulnerability scanning designs.
 
-VMware Migration & Current Work
+[VIRTUALIZATION_PLATFORM] Migration & Current Work
 * DevOps ticket submitted for [PRODUCT_SHORT] pipeline setup — waiting on approvals before work begins
-* VMware 7 to 8 migration in progress; encountering errors at the template level (VMware-related, not [PRODUCT_SHORT])
-* Previously built VM lifecycle automation: server build workflows with automated AD joining, Puppet installation, and SolarWinds integration
+* [VIRTUALIZATION_PLATFORM] 7 to 8 migration in progress; encountering errors at the template level ([VIRTUALIZATION_PLATFORM]-related, not [PRODUCT_SHORT])
+* Previously built VM lifecycle automation: server build workflows with automated AD joining, [CONFIG_TOOL_B] installation, and SolarWinds integration
 
 Vulnerability Scanning Feedback
 * Current security compliance at 20% — need 80% for production; moving to Windows Server 2025
 * Preference for template scanning over runtime scanning
-* Using CIS 2 profile via Ansible for Linux servers
+* Using compliance standards profile via [CONFIG_MGMT_TOOL] for Linux servers
 * Reporting requirements:
    * PDF reports preferred due to limited [PLATFORM] portal access
    * Weekly/monthly email summaries needed

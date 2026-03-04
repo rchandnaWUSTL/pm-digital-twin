@@ -208,7 +208,7 @@ Generate a concise summary:
 - Template: "Slack thread discussing [main topic] [with whom/for what]"
 - Examples:
   - "Slack thread discussing [TOOL_A] integration requirements for [PRODUCT]"
-  - "Slack thread about CIS benchmark prioritization with [CUSTOMER_1] context"
+  - "Slack thread about compliance benchmark prioritization with [CUSTOMER_1] context"
   - "Slack thread exploring MCP server authentication options"
 
 Extract main topic from:

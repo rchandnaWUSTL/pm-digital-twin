@@ -66,7 +66,7 @@ Trigger: `"Write a PRFAQ for [topic]"` or `"Generate a PRFAQ from [PRD]"`
 
 Generates working-backwards Press Release / FAQ document:
 - Two modes: from existing PRD (with graph traversal) or from customer evidence
-- Follows Amazon's working-backwards format
+- Follows working-backwards format (Amazon-style)
 - Always evidence-grounded with customer quotes → **Suspend for approval**
 - After approval: saves PRFAQ to product context
 
@@ -251,12 +251,12 @@ Copy your raw meeting notes (any format—transcript, bullet points, informal no
 Meeting with [CUSTOMER_NAME] - 2024-03-15
 
 Discussed their current image compliance workflow. They're manually generating
-CIS benchmark reports using external tools, then correlating with their Packer
-builds. Takes 2-3 hours per image. Asked if we could integrate CIS scanning
-directly into HCP Packer channel view.
+compliance benchmark reports using external tools, then correlating with their [IMAGE_BUILDER]
+builds. Takes 2-3 hours per image. Asked if we could integrate compliance scanning
+directly into [IMAGE_BUILDER] distribution channel view.
 
-Also raised concerns about Wiz vulnerability data—need it visible in Packer
-for STIG compliance audits.
+Also raised concerns about [VULN_PLATFORM_A] vulnerability data—need it visible in [IMAGE_BUILDER]
+for security compliance audits.
 ```
 
 ### Step 3: Run Pipeline
@@ -276,7 +276,7 @@ Run full-call-pipeline for [CUSTOMER_NAME]
    ✓ Notes saved: customer-notes/[customer-name]-2024-03-15.md
 
 ⚙️  update-customer-profile — merging into existing profile
-   ✓ Added "CIS benchmarks" to open asks (times_mentioned: 1)
+   ✓ Added "compliance benchmarks" to open asks (times_mentioned: 1)
    ✓ Profile updated: customer-profiles/[customer-name].json
 
 🔀 Branching into 5 parallel extractions...
@@ -304,16 +304,16 @@ Run full-call-pipeline for [CUSTOMER_NAME]
 ```
 ⏸  PAUSED — Jira sync ready for approval ([CUSTOMER_NAME], 2024-03-15)
 
-   CREATE  "CIS Benchmark Integration for Compliance Reporting"
+   CREATE  "Compliance Benchmark Integration for Compliance Reporting"
            Evidence: [CUSTOMER_NAME] (×1)
            Epic: [YOUR_EPIC_KEY] (Compliance epic)
 
-   CREATE  "Wiz Vulnerability Data in Channel View"
+   CREATE  "[VULN_PLATFORM_A] Vulnerability Data in Channel View"
            Evidence: [CUSTOMER_NAME] (×1)
            Epic: [YOUR_EPIC_KEY] (Vulnerability epic)
 
    Run: "approve [customer-name] Jira sync" to proceed
-        "approve [customer-name] Jira sync except CIS" for partial
+        "approve [customer-name] Jira sync except compliance benchmark" for partial
         "cancel [customer-name] Jira sync" to discard
 ```
 
@@ -328,7 +328,7 @@ approve [customer-name] Jira sync
 Or for partial approval:
 
 ```
-approve [customer-name] Jira sync except Wiz
+approve [customer-name] Jira sync except [VULN_PLATFORM_A]
 ```
 
 **After approval:**
@@ -337,11 +337,11 @@ approve [customer-name] Jira sync except Wiz
 ⚙️  Resuming Jira sync with 2 approved actions...
 
 🔀 Parallel Jira writes (2 operations)...
-   → create-jira-issue: "CIS Benchmark Integration..."
-   → create-jira-issue: "Wiz Vulnerability Data..."
+   → create-jira-issue: "Compliance Benchmark Integration..."
+   → create-jira-issue: "[VULN_PLATFORM_A] Vulnerability Data..."
 
-   ✓ Created: [YOUR_JIRA_PROJECT]-1234 "CIS Benchmark Integration"
-   ✓ Created: [YOUR_JIRA_PROJECT]-1235 "Wiz Vulnerability Data"
+   ✓ Created: [YOUR_JIRA_PROJECT]-1234 "Compliance Benchmark Integration"
+   ✓ Created: [YOUR_JIRA_PROJECT]-1235 "[VULN_PLATFORM_A] Vulnerability Data"
 
 ⚙️  Jira sync log written
    ✓ File: insights/[customer-name]-2024-03-15-jira-sync.json
@@ -580,7 +580,7 @@ This preserves full history: "Pain point first raised 3 months ago, mentioned 5 
 Product context files use Obsidian-style wikilinks (`[[target]]`) to reference related content:
 
 ```markdown
-[[cis-benchmark-prd-2024-03-15]]        → Product context file
+[[compliance-benchmark-prd-2024-03-15]]        → Product context file
 [[Customer Name]]                       → Customer profile
 [[YOUR_JIRA_PROJECT-1234]]              → Jira issue
 [[customer-name-2024-03-15]]            → Customer note

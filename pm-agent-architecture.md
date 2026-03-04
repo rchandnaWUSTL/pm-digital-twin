@@ -244,7 +244,7 @@ When a skill needs product context (e.g., `prd-generator` gathering evidence):
 
 Example entries:
 - "Never match to Closed Jira issues---always propose new issue"
-- "[CUSTOMER_2] mentions [COMPLIANCE_STANDARD] benchmarks frequently---recognize as compliance ask"
+- "[CUSTOMER_2] mentions compliance benchmarks frequently---recognize as compliance ask"
 - "When customer says '[TOOL_A] integration,' check if they mean selector or vulnerability data"
 
 ## 4.2 Graph Architecture
@@ -255,7 +255,7 @@ Product context forms a graph connected by wikilinks. This enables rich context 
 
 | Target Type | Format | Example |
 |-------------|--------|---------|
-| Product context | `[[filename-without-extension]]` | `[[cis-benchmark-prd-2026-02-20]]` |
+| Product context | `[[filename-without-extension]]` | `[[compliance-benchmark-prd-2026-02-20]]` |
 | Customer profile | `[[Canonical Name]]` | `[[[CUSTOMER_1]]]` |
 | Jira issue | `[[KEY-NUMBER]]` | `[[[PROJECT_KEY]-002]]` |
 | Customer note | `[[canonical-YYYY-MM-DD]]` | `[[[customer-1]-2026-02-15]]` |
@@ -286,7 +286,7 @@ When a skill explicitly needs rich context, it follows wikilinks **exactly one h
 **Example traversal log:**
 
 ```
-[Step]  prd-generator — loading product context for "[COMPLIANCE_STANDARD] Benchmarking"...
+[Step]  prd-generator — loading product context for "Compliance Benchmarking"...
    [Done] Loaded: [example]-prd-2026-02-20.md
    -> Following wikilinks (1 hop):
       [Done] vulnerability-scanning-v2-eng-doc-2026-01-15.md
@@ -849,8 +849,8 @@ Highest confidence: MARKET
     |
     v
 [Router responsibilities]
-  1. Extract project tag: "[TOOL_A] Vulnerability Selector"
-  2. Generate slug: "wiz-vuln-selector-announcement"
+  1. Extract project tag: "[VULN_PLATFORM_A] Vulnerability Selector"
+  2. Generate slug: "[vuln-platform-a]-vuln-selector-announcement"
   3. Scaffold frontmatter:
        signal_source: market
     |
@@ -865,7 +865,7 @@ Extract:
     v
 Save to:
   /context/product-context/market-signals/
-  wiz-vuln-selector-announcement-signal-2026-02-15.md
+  [vuln-platform-a]-vuln-selector-announcement-signal-2026-02-15.md
     |
     v
 DONE
@@ -874,7 +874,7 @@ DONE
 ### Manual Override Examples
 
 ```
-"Ingest this as market signal: [Qualys press release]"
+"Ingest this as market signal: [[VULN_SCANNER_A] press release]"
 → Bypasses auto-detection, routes directly to ingest-signal
    with signal_source = market
 
@@ -1259,7 +1259,7 @@ Write updated profile (never delete data)
 {
   "open_asks": [
     {
-      "ask": "[COMPLIANCE_STANDARD] benchmark integration for compliance reporting",
+      "ask": "compliance benchmark integration for compliance reporting",
       "first_raised": "2026-01-15",
       "times_mentioned": 3,
       "jira_issue": null
@@ -1301,7 +1301,7 @@ Output: matched[] (existing issues to update)
 
 ## Example 1: Full Call Pipeline ([CUSTOMER_1])
 
-**Input:** Raw meeting transcript (500 words) mentioning [COMPLIANCE_STANDARD] benchmarks and STIG compliance.
+**Input:** Raw meeting transcript (500 words) mentioning compliance benchmarks and security compliance.
 
 **Execution trace:**
 
@@ -1312,7 +1312,7 @@ Output: matched[] (existing issues to update)
    [Done] Notes saved: customer-notes/[customer-1]-2026-02-15.md
 
 [Step]  update-customer-profile — merging into existing profile
-   [Done] Added "[COMPLIANCE_STANDARD] benchmarks" to open asks (times_mentioned: 2 → 3)
+   [Done] Added "compliance benchmarks" to open asks (times_mentioned: 2 → 3)
    [Done] Profile updated: customer-profiles/[customer-1].json
 
 [Parallel] Branching into 5 parallel extractions on [customer-1]-2026-02-15.md...
@@ -1336,16 +1336,16 @@ Output: matched[] (existing issues to update)
 
 [PAUSED]  PAUSED — Jira sync ready for approval ([CUSTOMER_1], 2026-02-15)
 
-   CREATE  "[COMPLIANCE_STANDARD] Benchmark Integration for Compliance Reporting"
+   CREATE  "Compliance Benchmark Integration for Compliance Reporting"
            Evidence: [CUSTOMER_1] (×3), [CUSTOMER_2] (×1)
            Epic: [PROJECT_KEY]-002 (Compliance Reporting & Governance)
 
    UPDATE  [PROJECT_KEY]-001 "Vulnerability Data in [PRODUCT]"
            New evidence: [CUSTOMER_1] 2026-02-15: "Need [TOOL_A] vuln
-           data visible in [PRODUCT_SHORT] channel view for STIG compliance"
+           data visible in [PRODUCT_SHORT] channel view for security compliance"
 
    Run: "approve [CUSTOMER_1] Jira sync" to proceed
-        "approve [CUSTOMER_1] Jira sync except [COMPLIANCE_STANDARD]" for partial
+        "approve [CUSTOMER_1] Jira sync except compliance benchmark" for partial
         "cancel [CUSTOMER_1] Jira sync" to discard
 ```
 
@@ -1358,7 +1358,7 @@ Output: matched[] (existing issues to update)
    → create-jira-issue: "[COMPLIANCE_STANDARD] Benchmark Integration..."
    → update-jira-issue: [PROJECT_KEY]-001 with new evidence
 
-   [Done] Created: [PROJECT_KEY]-XXX "[COMPLIANCE_STANDARD] Benchmark Integration for Compliance Reporting"
+   [Done] Created: [PROJECT_KEY]-XXX "Compliance Benchmark Integration for Compliance Reporting"
    [Done] Updated: [PROJECT_KEY]-001 with comment
 
 [Step]  Jira sync log written
@@ -1702,7 +1702,7 @@ Epic (level 1)
 | Epic | Title | Relevant To |
 |------|-------|-------------|
 | [PROJECT_KEY]-001 | Vulnerability Data in [PRODUCT] | Vuln scanning, [DEFAULT_SCANNER], [TOOL_A] signals |
-| [PROJECT_KEY]-002 | Image Compliance Reporting & Governance | [COMPLIANCE_STANDARD] benchmarks, compliance asks |
+| [PROJECT_KEY]-002 | Image Compliance Reporting & Governance | Compliance benchmarks, compliance asks |
 | [PROJECT_KEY]-003 | Strengthen Enterprise Readiness | AAP auth, enterprise asks |
 | [PROJECT_KEY]-004 | Enforced Provisioners --- Phase 1 | Provisioner control |
 | [PROJECT_KEY]-005 | Channel Assignment Management --- Phase 1 | Channel management |

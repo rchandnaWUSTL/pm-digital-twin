@@ -406,7 +406,7 @@ This PRD covers the provider selection mechanism, [TOOL_A] integration, and the 
 
 [PRODUCT] shipped vulnerability scanning in 2025 using [DEFAULT_SCANNER] as the data provider. [DEFAULT_SCANNER] is open-source and provides broad CVE coverage across common package ecosystems.
 
-Customers with enterprise security tooling -- particularly in FSI -- use commercial scanning platforms like [TOOL_A] that provide broader coverage including CIS benchmarks, misconfigurations, and license compliance beyond CVE scanning. These customers currently run [TOOL_A] CLI inside [PRODUCT_SHORT] provisioners at build time as a workaround, but results aren't visible in the [PRODUCT] registry UI.
+Customers with enterprise security tooling -- particularly in FSI -- use commercial scanning platforms like [TOOL_A] that provide broader coverage including compliance benchmarks, misconfigurations, and license compliance beyond CVE scanning. These customers currently run [TOOL_A] CLI inside [PRODUCT_SHORT] provisioners at build time as a workaround, but results aren't visible in the [PRODUCT] registry UI.
 
 Engineering completed an initial spike on provider abstraction (ref: [PROJECT_KEY]-001 -- Vulnerability Data in [PRODUCT]).
 
@@ -458,7 +458,7 @@ Defines which scanning tools are approved for use across the organization. Does 
 | Phase 1 | Registry-level provider selection | Allow administrators to choose their scanning provider at the registry level |
 | Phase 1 | Normalized vulnerability display | Display vulnerability data from any provider in a consistent UI format |
 | Phase 2 | Dual-provider mode | Allow customers to run both [DEFAULT_SCANNER] and [TOOL_A] simultaneously and compare results |
-| Phase 2 | CIS benchmark integration via [TOOL_A] | Surface [TOOL_A] CIS benchmark results in the [PRODUCT] compliance view |
+| Phase 2 | Compliance benchmark integration via [TOOL_A] | Surface [TOOL_A] compliance benchmark results in the [PRODUCT] compliance view |
 
 ## Phase 1: Provider Selection Foundation
 
@@ -499,19 +499,19 @@ Administrators must be able to select their vulnerability scanning provider at t
 **Tier:** Lighthouse
 **Calls referencing this topic:** 3
 
-[CUSTOMER_1] has been the most vocal proponent of [TOOL_A] integration. Their security architect is "heavily focused on CIS benchmarks for AWS/Azure" and the organization already uses [TOOL_A] for CIS benchmark scanning via machine config scan type (Nov 2025). They currently run [TOOL_A] CLI inside [PRODUCT_SHORT] provisioners at build time -- a workaround that works but keeps vulnerability data outside [PRODUCT]'s UI. They explicitly asked for "a selector option between [DEFAULT_SCANNER] and [TOOL_A] databases" (Dec 2025).
+[CUSTOMER_1] has been the most vocal proponent of [TOOL_A] integration. Their security architect is "heavily focused on compliance benchmarks for AWS/Azure" and the organization already uses [TOOL_A] for compliance benchmark scanning via machine config scan type (Nov 2025). They currently run [TOOL_A] CLI inside [PRODUCT_SHORT] provisioners at build time -- a workaround that works but keeps vulnerability data outside [PRODUCT]'s UI. They explicitly asked for "a selector option between [DEFAULT_SCANNER] and [TOOL_A] databases" (Dec 2025).
 
 ### [CUSTOMER_4]
 
 **Tier:** Lighthouse
 **Calls referencing this topic:** 2
 
-[CUSTOMER_4] follows CIS 2 profile via Ansible for Linux servers and has expressed interest in template-level security compliance (Dec 2025). While they haven't specifically asked for [TOOL_A], their preference for "template scanning over runtime scanning" and need for PDF vulnerability reports (Nov 2025) indicate they would benefit from richer provider options.
+[CUSTOMER_4] follows compliance Level 2 profile via [CONFIG_MGMT_TOOL] for Linux servers and has expressed interest in template-level security compliance (Dec 2025). While they haven't specifically asked for [VULN_PLATFORM_A], their preference for "template scanning over runtime scanning" and need for PDF vulnerability reports (Nov 2025) indicate they would benefit from richer provider options.
 
 ## Out of Scope
 
-* Adding providers beyond [TOOL_A] (e.g., Qualys, Tenable, Snyk) -- deferred to Phase 2+ based on customer demand
-* CIS benchmark display in the [PRODUCT] UI -- covered under [PROJECT_KEY]-002, separate PRD
+* Adding providers beyond [TOOL_A] (e.g., [VULN_SCANNER_A], [VULN_SCANNER_C], [VULN_SCANNER_B]) -- deferred to Phase 2+ based on customer demand
+* Compliance benchmark display in the [PRODUCT] UI -- covered under [PROJECT_KEY]-002, separate PRD
 * Vulnerability remediation automation (auto-patching, playbook triggers) -- separate feature area
 * Changes to the [PRODUCT_SHORT] CLI or build-time scanning behavior -- this PRD covers the registry-side data and display only
 * [TOOL_A] license management or billing integration -- customers bring their own [TOOL_A] subscription
